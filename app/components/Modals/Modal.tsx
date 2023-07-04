@@ -47,12 +47,14 @@ const Modal: React.FC<ModalProps> = ({
     if (disabled) {
       return;
     }
+    onSubmit();
   }, [disabled, onSubmit]);
 
   const handleSecondaryAction = useCallback(() => {
     if (disabled || secondaryAction) {
       return;
     }
+    secondaryAction();
   }, [disabled, secondaryAction]);
 
   if (!isOpen) {
@@ -93,6 +95,7 @@ const Modal: React.FC<ModalProps> = ({
           <div
             className={`
                 translate
+                transition
                 duration-300
                 h-full
                 ${showModal ? "translate-y-0" : "translate-y-full"}
@@ -169,6 +172,7 @@ const Modal: React.FC<ModalProps> = ({
                   onClick={handleSubmit} 
                   />
                 </div>
+                {footer}
               </div>
             </div>
           </div>
