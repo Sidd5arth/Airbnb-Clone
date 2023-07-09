@@ -4,9 +4,10 @@ const nextConfig = {
     },
     images: {
       domains: ['avatars.githubusercontent.com',
-      'localhost',
-       'lh3.googleusercontent.com']
+       'lh3.googleusercontent.com',
+       'res.cloudinary.com']
     }
 }
 
 module.exports = nextConfig;
+
