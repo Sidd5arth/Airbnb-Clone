@@ -65,7 +65,6 @@ const RentModal = () => {
   const roomCount = watch('roomCount');
   const bathroomCount = watch('bathroomCount');
   const imageSrc = watch('imageSrc');
-  console.log(guestCount);
 
   const Map = useMemo(() => dynamic(() => import('../Map'),{
     ssr: false
@@ -78,7 +77,6 @@ const RentModal = () => {
       shouldValidate: true,
     })
   }
-
 
   const onBack = () =>{
     setStep((value) => value-1)

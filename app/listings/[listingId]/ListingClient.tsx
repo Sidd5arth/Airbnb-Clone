@@ -2,8 +2,7 @@
 
 import Container from "@/app/components/Container";
 import { categories } from "@/app/components/Navbar/Categories";
-import { SafeUser, SafeListings } from "@/app/types";
-import { Reservation } from "@prisma/client";
+import { SafeUser, SafeListings, SafeReservations } from "@/app/types";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import ListingHead from "@/app/components/Listings/ListingHead";
 import ListingInfo from "@/app/components/Listings/ListingInfo";
@@ -12,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { Range } from "react-date-range";
 import ListingReservation from "@/app/components/Listings/ListingReservation";
 
 const initialDateRange = {
@@ -21,7 +21,7 @@ const initialDateRange = {
 };
 
 interface ListingClientProps {
-    reservation?: Reservation[];
+    reservation?: SafeReservations[];
     listing: SafeListings & {
         user: SafeUser
     };
@@ -50,7 +50,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
     const [isLoading, setIsLoading] = useState(false);
     const [totalPrice, setTotalPrice] = useState(listing.price);
-    const [dateRange, setDateRange] = useState(initialDateRange);
+    const [dateRange, setDateRange] = useState<Range>(initialDateRange);
 
     const onCreateReservation = useCallback(() => {
         if(!currentUser){
@@ -59,16 +59,16 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
             setIsLoading(true);
 
-            axios.post('/api/reservation', {
+            axios.post('/api/reservations', {
                 totalPrice,
-                startDate: dateRange.startDate,
+                startData: dateRange.startDate,
                 endDate: dateRange.endDate,
                 listingId: listing?.id
             })
             .then(() => {
                 toast.success("Listing reserved");
                 setDateRange(initialDateRange);
-                //trips
+                router.push('/trips');
                 router.refresh();
             })
             .catch(() => {
