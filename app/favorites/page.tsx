@@ -19,7 +19,6 @@ const ListingPage = async () => {
             </ClientOnly>
         )
     }
-
     return (
         <ClientOnly>
                 <FavoritesClient
