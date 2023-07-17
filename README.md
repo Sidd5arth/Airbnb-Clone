@@ -1,5 +1,22 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+[HAVE A LOOK]
+
+✏ LIVE Deployed App - https://renthousing-clone-4mcokxav3-sidd5arth.vercel.app/  
+
+✏ Create New listing by registering and signing in
+
+✏ Like and add it to your favorites list and access through menu, unlike to remove.
+
+✏ Reserve a property and add it to your reserved list and access through menu "a reservation can be cancelled by either the owner of the property or the reserver"
+
+✏ You can see your property that is added by you in property list and access through menu "only you can delete your properties from listings"
+
+✏ You can use filter to select according to your need and time
+
+✏ No one can reserve a property if already reserved based on dates
+
+
 ## Getting Started
 
 First, run the development server:
