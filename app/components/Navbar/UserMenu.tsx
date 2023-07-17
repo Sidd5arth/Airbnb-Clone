@@ -35,6 +35,10 @@ const UserMenu:React.FC <UserMenuProps> = ({
         rentModal.onOpen();
     }, [currentUser, loginModal, rentModal]);
 
+    const handleMenuItemClick = useCallback(() => {
+        toggleOpen();
+    }, [toggleOpen]);
+
     return ( 
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
@@ -76,6 +80,7 @@ const UserMenu:React.FC <UserMenuProps> = ({
                 </div>
             </div>
             {isOpen &&(
+                <div>
                 <div
                 className="
                 absolute
@@ -87,33 +92,34 @@ const UserMenu:React.FC <UserMenuProps> = ({
                 right-0
                 top-12
                 text-sm
+                z-[50]
                 ">
                   <div className="flex flex-col cursor-pointer">
                     {currentUser ? (
                         <>
                         <MenuItems
-                        onClick={() => router.push('/trips')}
+                        onClick={() => {router.push('/trips'); handleMenuItemClick();}}
                         lable="My trips"
                         />
                         <MenuItems
-                        onClick={() => router.push('/favorites')}
+                        onClick={() => {router.push('/favorites'); handleMenuItemClick();}}
                         lable="My Favorites"
                         />
                         <MenuItems
-                        onClick={() => router.push('/reservations')}
+                        onClick={() => {router.push('/reservations'); handleMenuItemClick();}}
                         lable="My Reservations"
                         />
                         <MenuItems
-                        onClick={() => router.push('/properties')}
+                        onClick={() => {router.push('/properties'); handleMenuItemClick();}}
                         lable="My Properties"
                         />
                         <MenuItems
-                        onClick={rentModal.onOpen}
+                        onClick={() => {rentModal.onOpen(); handleMenuItemClick();}}
                         lable="Airbnb My home"
                         />
                         <hr/>
                         <MenuItems
-                        onClick={() =>signOut()}
+                        onClick={() =>{signOut(); handleMenuItemClick();}}
                         lable="Logout"
                         />
                        </>
@@ -130,6 +136,19 @@ const UserMenu:React.FC <UserMenuProps> = ({
                          </>
                     )}
                   </div>  
+                </div>
+                <div 
+                onClick={handleMenuItemClick}
+                className="
+                fixed
+                top-0
+                left-0
+                w-screen
+                h-screen
+                opacity-0
+                z-[40]
+                ">    
+                </div>
                 </div>
             )}
         </div>
