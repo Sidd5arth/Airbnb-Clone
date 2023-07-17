@@ -20,6 +20,7 @@ interface ListingInfoProps {
     category: {
         icon: IconType;
         label: string;
+        description: string;
     } | undefined
     locationValue: string;
 }

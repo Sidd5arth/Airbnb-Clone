@@ -3,12 +3,14 @@
 import { IconType } from "react-icons";
 
 interface ListingCategoryProps {
+    children:React.ReactNode;
     icon: IconType;
     label: string;
     description: string;
 }
 
 const ListingCategory: React.FC <ListingCategoryProps> = ({
+    children,
     icon: Icon,
     label,
     description

@@ -98,6 +98,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
         return categories.find((item) =>
         item.label === listing.category);
     }, [listing.category]);
+    
     return (  
         <Container>
             <div className="max-w-screen-lg mx-auto">
