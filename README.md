@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 [HAVE A LOOK]
 
-✏ LIVE Deployed App - https://renthousing-clone-4mcokxav3-sidd5arth.vercel.app/  
+✏ LIVE Deployed App - https://rent-housing-app.vercel.app/ 
 
 ✏ Create New listing by registering and signing in
 
